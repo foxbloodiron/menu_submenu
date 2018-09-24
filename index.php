@@ -28,7 +28,7 @@ html, body{
 .sidebar a:hover{
 	color:white;
   transition: 0.2s;
-  background: #4c4c4c;
+  background: #3F3F3F;
 }
 
 .sidebar{
@@ -55,12 +55,32 @@ html, body{
   padding: 0;
   
 }
+
 .sidebar ul > li.active > ul {
-  color: white;
+  color: #bfbfbf !important;
 }
 
 .sidebar ul > li > ul {
-  display: none;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.sidebar ul > li > a > svg{
+  margin-right: 5px;
+}
+
+.sidebar ul > li.open > ul{
+  height: 100%;
+  visibility: visible;
+  opacity: 1;
+  background: #5E5E5E;
+}
+
+.sidebar ul > li.open{
+  height: 100%;
+  visibility: visible;
+  opacity: 1;
 }
 
 .sidebar ul > li > ul > li a{
@@ -69,34 +89,33 @@ html, body{
 .sidebar ul > li > ul > li > ul > li a{
   padding: 10px 30px 10px 30px;
 }
-.sidebar ul > li.active a{
+.sidebar ul > li.active > a{
 	color: white;
 }
-
-.sidebar ul > li.open > ul{
-  display: block;
-  background: #777777;
-  transition: display .5s;
+.sidebar ul > li.active > a:only-child{
+  border-left: 5px solid white;
 }
-.sidebar ul > li.open{
-  display: block;
+.sidebar ul > li.active > a:after{
+  margin-left: -5px;
 }
 
-.sidebar ul > li.sub-menu:before{
+.sidebar ul > li.sub-menu > a:before{
   font-family: "Font Awesome 5 Free";
   content: "\f078";
   font-weight: 900;
   float: right;
-  line-height: 25px;
-  padding-right: 15px;
+  color: black;
+  /*line-height: 15px;
+  padding: 10px;*/
 }
-.sidebar ul > li.sub-menu.open:before{
+.sidebar ul > li.sub-menu.open > a:before{
   font-family: "Font Awesome 5 Free";
   content: "\f077";
   font-weight: 900;
   float: right;
-  line-height: 25px;
-  padding-right: 15px;
+  color: black;
+  /*line-height: 15px;
+  padding: 10px;*/
 }
 header{
   position: absolute;
@@ -128,10 +147,10 @@ header .logo{
 <div class="container">
   <div class="sidebar">
     <ul>
-      <li class="active"><a href="home.html">Menu item 1</a></li>
-      <li><a href="home.html">Menu item 2</a></li>
+      <li><a href="home.html"><i class="fa fa-cube"></i> Menu item 1</a></li>
+      <li><a href="home.html"><i class="fa fa-cubes"></i> Menu item 2</a></li>
       <li class="sub-menu">
-        <a href="javascript:void(0);">Menu item with submenu</a>
+        <a href="javascript:void(0);"><i class="fa fa-trash"></i> Menu item with submenu</a>
         <ul>
           <li>
           	<a href="javascript:void(0);">Submenu item</a>
@@ -143,13 +162,13 @@ header .logo{
           <li><a href="javascript:void(0);">menu item</a></li>
         </ul>
       </li>
-      <li>
-        <a href="javascript:void(0);">Menu item with submenu 2</a>
+      <li  class="active">
+        <a href="javascript:void(0);"><i class="fa fa-pencil-alt"></i> Menu item with submenu 2</a>
         <ul>
-          <li>
+          <li  class="active">
             <a href="javascript:void(0);">Submenu item</a>
             <ul>
-              <li>
+              <li  class="active">
                 <a href="javascript:void(0);">Submenu item</a>
               </li>
               <li>
@@ -192,12 +211,14 @@ header .logo{
 $(document).ready(function(){
 
   $('.sidebar ul > li:has(ul)').addClass('sub-menu');
+
+  $('.sidebar ul > li.active:has(ul)').addClass('open');
   
 
 	$('.sidebar ul > li:has(ul) a').on('click', function(a){
 
-      $(this).parent().siblings().removeClass('open');
-      $(this).parent().toggleClass('open'); 
+      $(this).parent().siblings().removeClass('open').show(2500);
+      $(this).parent().toggleClass('open').show(2500);
   });
 });
 
