@@ -4,6 +4,7 @@
 	<title>Menu > Sub Menu</title>
 	<!-- <link rel="stylesheet" type="text/css" href="node_modules/jquery-ui-dist/jquery-ui.css"> -->
   <link rel="stylesheet" type="text/css" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
 <style type="text/css">
 
 html, body{
@@ -13,7 +14,7 @@ html, body{
 	margin: 0;
   font-family: sans-serif;
 }
-.container{
+.container-custom{
   width: 100%;
   height: 100%;
 
@@ -61,20 +62,22 @@ html, body{
 }
 
 .sidebar ul > li > ul {
-  height: 0;
+  max-height: 0;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear, max-height .2s linear;
 }
 .sidebar ul > li > a > svg{
   margin-right: 5px;
 }
 
 .sidebar ul > li.open > ul{
-  height: 100%;
+  max-height: 100%;
   visibility: visible;
   opacity: 1;
   background: #5E5E5E;
+  transition: visibility 0s, opacity 0.5s linear, max-height .2s linear;
+
 }
 
 .sidebar ul > li.open{
@@ -144,7 +147,7 @@ header .logo{
     LOGO
   </div>
 </header>
-<div class="container">
+<div class="container-custom">
   <div class="sidebar">
     <ul>
       <li><a href="home.html"><i class="fa fa-cube"></i> Menu item 1</a></li>
@@ -204,6 +207,7 @@ header .logo{
 
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
+  <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<!-- <script type="text/javascript" src="node_modules/jquery-ui-dist/jquery-ui.js"></script> -->
 
 <script type="text/javascript">
