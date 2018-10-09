@@ -36,6 +36,7 @@ html, body{
 	margin-top: 50px;
 	height: 100%;
 	width: 200px;
+  float: left;
   position: relative;
   font-family: "calibri";
 }
@@ -134,7 +135,13 @@ header .logo{
   float: left;
   font-weight: bold;
 }
-
+.content{
+  float: right;
+  position: relative;
+  margin-top: 50px;
+  height: 100%;
+  margin-left: 200px;
+}
 
 </style>
 </head>
@@ -200,6 +207,15 @@ header .logo{
       </li>
     </ul>
   </div>
+  <div class="content">
+    <ul id="lis-angka">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
 </div>
 
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
@@ -220,6 +236,10 @@ $(document).ready(function(){
       $(this).parent().siblings().removeClass('open').show(2500);
       $(this).parent().toggleClass('open').show(2500);
   });
+
+  $('#lis-angka > li').each(function(a){
+    $(this).text(a);
+  })
 });
 
 </script>
