@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Menu > Sub Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!-- <link rel="stylesheet" type="text/css" href="node_modules/jquery-ui-dist/jquery-ui.css"> -->
   <link rel="stylesheet" type="text/css" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
@@ -35,10 +36,11 @@ html, body{
 .sidebar{
 	background-color: #4c4c4c;
 	margin-top: 50px;
+  min-height: 100vh;
 	height: 100%;
 	width: 200px;
   float: left;
-  position: relative;
+  position: absolute;
   font-family: "calibri";
 }
 
@@ -139,13 +141,19 @@ header .logo{
   font-weight: bold;
 }
 .content{
-  float: right;
+  float: left;
   position: relative;
   margin-top: 50px;
+  min-height: 100vh;
+  min-width: 100%;
   height: 100%;
+  background-color: #e2e2e2; 
   margin-left: 200px;
+  top: 0;
 }
-
+.breadcrumb{
+  width: 100%;
+}
 </style>
 </head>
 <body>
@@ -211,6 +219,9 @@ header .logo{
     </ul>
   </div>
   <div class="content">
+    <div class="breadcrumb">
+      BreadCrumb
+    </div>
     <ul id="lis-angka">
       <li></li>
       <li></li>
